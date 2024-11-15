@@ -40,7 +40,10 @@ export const postsReducer = createReducer(
   })),
   on(loadSinglePostSuccess, (state, { post }) => ({
     ...state,
-    posts: [...state.posts, post],
+    posts: [
+      ...state.posts, 
+      ...[post].filter((p: Post) => !state.posts.find(p => p.id === post.id))
+    ].sort((a, b) => Number(b.id) - Number(a.id)),
     loading: false,
     error: null
   })),
