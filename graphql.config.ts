@@ -1,0 +1,1 @@
+export const apiUri = 'https://graphqlzero.almansi.me/api';

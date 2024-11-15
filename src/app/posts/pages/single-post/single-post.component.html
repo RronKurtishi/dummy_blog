@@ -1,0 +1,26 @@
+<div class="my-8 max-w-2xl mx-auto">
+  <button class="primary mb-6" [routerLink]="['/']">
+    All Posts
+  </button>
+  <div class="card flex flex-col gap-6">
+    @if (loading$ | async) {
+    <app-spinner [text]="'Loading Post'" />
+    }
+    @if (post$ | async; as post) {
+    <div>
+      <h1 class="mb-1">
+        {{ post.title | titlecase }}
+      </h1>
+      <p class="text-sm text-slate-500">
+        By
+        <span class="font-medium">
+          {{ post.user.name }}
+        </span>
+      </p>
+    </div>
+    <p>
+      {{ post.body | paragraphcase }}
+    </p>
+    }
+  </div>
+</div>

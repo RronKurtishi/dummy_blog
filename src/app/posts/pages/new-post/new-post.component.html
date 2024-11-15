@@ -1,0 +1,25 @@
+<div class="my-8 max-w-2xl mx-auto">
+  <button class="primary mb-6" [routerLink]="['/']">
+    All Posts
+  </button>
+  <div class="card">
+    <h1 class="mb-4">Create New Post</h1>
+    <form [formGroup]="newPostForm">
+      <div class="mb-6">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title" class="block mt-2 w-full">
+        @if (newPostForm.controls['title'].invalid && newPostForm.controls['title'].touched) {
+        <div class="text-red-500 text-sm">Title is required</div>
+        }
+      </div>
+      <div class="mb-6">
+        <label for="body">Body</label>
+        <textarea class="form-control" rows="16" id="body" formControlName="body" class="block mt-2 w-full"></textarea>
+        @if (newPostForm.controls['body'].invalid && newPostForm.controls['body'].touched) {
+        <div class="text-red-500 text-sm mt-1">Body is required</div>
+        }
+      </div>
+      <button type="submit" class="primary w-full" (click)="onSubmit()">Create Post</button>
+    </form>
+  </div>
+</div>

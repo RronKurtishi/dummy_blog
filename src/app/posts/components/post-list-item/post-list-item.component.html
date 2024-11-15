@@ -1,0 +1,10 @@
+<a [routerLink]="['/post', post.id]"
+  class="h-32 flex flex-col justify-between p-4 border bg-white rounded-xl transition hover:bg-slate-50"
+  title="{{ post.title | titlecase }} - {{ post.user.name }}">
+  <h2 class="line-clamp-2 text-lg">
+    {{ post.title | titlecase }}
+  </h2>
+  <p class="text-sm font-medium text-slate-500">
+    {{ post.user.name }}
+  </p>
+</a>

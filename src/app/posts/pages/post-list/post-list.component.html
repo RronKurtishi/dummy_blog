@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-6 my-8">
+  <div class="flex justify-between items-center">
+    <h1>
+      All Posts
+    </h1>
+    <button [routerLink]="['/new']" class="primary">
+      New Post
+    </button>
+  </div>
+  @if (loading$ | async) {
+  <div class="my-12">
+    <app-spinner [text]="'Loading Posts'" />
+  </div>
+  } @else {
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    @for (post of posts$ | async;; track post.id) {
+    <app-post-list-item [post]="post" />
+    }
+  </div>
+  }
+</div>
